@@ -51,9 +51,8 @@ jobs:
           echo "              </ul>" >> $OUTPUT_DIR/index.html
           echo "          </body></html>" >> $OUTPUT_DIR/index.html
 
-      - name: GitHub Pages へのデプロイ
+      - name: GitHub Pages にデプロイ
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: ${{ env.OUTPUT_DIR }}
-          token: ${{ secrets.GITHUB_TOKEN }}  # ← ここを追加
