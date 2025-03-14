@@ -56,3 +56,4 @@ jobs:
         with:
           branch: gh-pages
           folder: ${{ env.OUTPUT_DIR }}
+          token: ${{ secrets.GITHUB_TOKEN }}  # ← ここを追加
