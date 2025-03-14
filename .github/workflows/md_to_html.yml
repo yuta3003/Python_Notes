@@ -1,0 +1,58 @@
+name: Convert Markdown to HTML and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  OUTPUT_DIR: output
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v3
+
+      - name: Pandoc のインストール
+        run: sudo apt-get install -y pandoc
+
+      - name: Markdown を HTML に変換
+        run: |
+          mkdir -p $OUTPUT_DIR
+          for file in *.md; do
+            [ -f "$file" ] || continue
+            filename=$(basename "$file" .md)
+            pandoc "$file" -o "$OUTPUT_DIR/$filename.html"
+          done
+
+      - name: index.html の追加
+        run: |
+          cat <<EOF > $OUTPUT_DIR/index.html
+          <!DOCTYPE html>
+          <html lang="ja">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Python Notes</title>
+          </head>
+          <body>
+              <h1>Python Notes</h1>
+              <ul>
+          EOF
+          for file in *.md; do
+            [ -f "$file" ] || continue
+            filename=$(basename "$file" .md)
+            echo "              <li><a href='$filename.html'>$filename</a></li>" >> $OUTPUT_DIR/index.html
+          done
+          echo "              </ul>" >> $OUTPUT_DIR/index.html
+          echo "          </body></html>" >> $OUTPUT_DIR/index.html
+
+      - name: GitHub Pages へのデプロイ
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ${{ env.OUTPUT_DIR }}
