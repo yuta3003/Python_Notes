@@ -1,0 +1,34 @@
+<h1 id="python-基礎">Python 基礎</h1>
+<h2 id="python-起動方法">Python 起動方法</h2>
+<h3 id="interactive">Interactive</h3>
+<p>対話的にPythonを実行する方法で、すぐにコードを入力し結果を確認できます。</p>
+<p>ターミナルやコマンドプロンプトで以下のコマンドを入力することで起動できます。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span></span></code></pre></div>
+<p>起動後の画面（例）:</p>
+<pre><code>Python 3.10.0 (default, Oct  4 2021, 14:59:43)
+[GCC 10.2.1 20210110] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;</code></pre>
+<p><code>&gt;&gt;&gt;</code>はPythonのプロンプトを表し、ここにコードを入力すると実行されます。</p>
+<p>pythonの対話モードから抜ける場合には<code>exit()</code>を実行してください。</p>
+<pre><code>&gt;&gt;&gt; exit()</code></pre>
+<p>また、ブラウザ上で実行できる<a
+href="https://colab.research.google.com/">Google Colab</a>やJupyter
+Labなどもあります。</p>
+<h3 id="non-interactive">Non-Interactive</h3>
+<p>Python スクリプト（.py ファイル）を実行するモード。
+スクリプトの内容をすべて書いておき、一気に実行します。</p>
+<ol type="1">
+<li>以下コマンドをターミナルで実行し、メモ帳を開きます。
+<code>cmd     notepad script.py</code></li>
+<li>以下内容を貼り付け、保存します。
+<code>Python     name = "Python"     print(f"Hello, {name}!")</code></li>
+<li>ターミナルに戻り、pythonを実行します。 <code>python script.py</code>
+実行結果: <code>$ python script.py     Hello, Python!</code></li>
+</ol>
+<h2 id="参考資料">参考資料</h2>
+<ul>
+<li><a href="https://utokyo-ipp.github.io/">東京大学Python入門</a></li>
+<li><a
+href="https://docs.python.org/ja/3/tutorial/index.html">Python公式チュートリアル</a></li>
+</ul>
