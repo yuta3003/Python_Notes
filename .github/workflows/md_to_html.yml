@@ -58,4 +58,4 @@ jobs:
           folder: ${{ env.OUTPUT_DIR }}
 
       - name: 画像フォルダをコピー
-        run: cp -r image $OUTPUT_DIR
+        run: cp -r image /image/$OUTPUT_DIR
