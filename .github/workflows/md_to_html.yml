@@ -56,3 +56,6 @@ jobs:
         with:
           branch: gh-pages
           folder: ${{ env.OUTPUT_DIR }}
+
+      - name: 画像フォルダをコピー
+        run: cp -r image $OUTPUT_DIR
