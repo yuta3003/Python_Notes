@@ -59,6 +59,3 @@ jobs:
 
       - name: 画像フォルダをコピー
         run: cp -r image $OUTPUT_DIR
-
-      - name: `.nojekyll` ファイルを追加
-        run: touch $OUTPUT_DIR/.nojekyll
