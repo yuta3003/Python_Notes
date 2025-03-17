@@ -1,0 +1,72 @@
+<h1 id="streamlitを使ってみよう">Streamlitを使ってみよう</h1>
+<h2 id="streamlitとは">Streamlitとは？</h2>
+<p>Streamlitは、Pythonのみで実装可能なWebアプリケーションのフレームワークです。
+シンプルなコードでインタラクティブなUIを作成でき、データ可視化や機械学習のデモなどに適しています。</p>
+<h3 id="streamlitの特徴">Streamlitの特徴</h3>
+<ul>
+<li>シンプルなコード 通常のWebフレームワーク(Flask,
+Django)とは異なり、HTMLやCSSを必要とせずPythonだけでWebアプリを作成することができます。</li>
+<li>高速な開発
+ホットリロードに対応しているため、ファイルを編集すると自動的にWebアプリも更新されます。</li>
+<li>データサイエンス向け
+PandasやTemsorFlowなどのライブラリと簡単に統合できるため、データ分析や機械学習の可視化に用いられることが多いです。</li>
+</ul>
+<h2
+id="streamlitを使ってwebアプリを作成">Streamlitを使ってWebアプリを作成</h2>
+<h3 id="ライブラリをインストールする">ライブラリをインストールする</h3>
+<p>まず、Streamlitをインストールします。</p>
+<pre><code>pip install streamlit</code></pre>
+<h3 id="ファイルを作成する">ファイルを作成する</h3>
+<p>次に、アプリのスクリプトファイルを作成します。</p>
+<pre><code>notepad streamlit_app.py</code></pre>
+<p>以下内容を保存し、メモ帳を閉じる</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> streamlit <span class="im">as</span> st</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># タイトル</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>st.title(<span class="st">&quot;簡単な Streamlit アプリ&quot;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># テキスト入力</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> st.text_input(<span class="st">&quot;名前を入力してください&quot;</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ボタン</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> st.button(<span class="st">&quot;送信&quot;</span>):</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    st.write(<span class="ss">f&quot;こんにちは、</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> さん！&quot;</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># スライダー</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> st.slider(<span class="st">&quot;年齢&quot;</span>, <span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">25</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>st.write(<span class="ss">f&quot;あなたの年齢は </span><span class="sc">{</span>age<span class="sc">}</span><span class="ss"> 歳です。&quot;</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># チェックボックス</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> st.checkbox(<span class="st">&quot;詳細を表示&quot;</span>):</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    st.write(<span class="st">&quot;これは詳細情報です！&quot;</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># セレクトボックス</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>option <span class="op">=</span> st.selectbox(<span class="st">&quot;好きな色を選んでください&quot;</span>, [<span class="st">&quot;赤&quot;</span>, <span class="st">&quot;青&quot;</span>, <span class="st">&quot;緑&quot;</span>])</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>st.write(<span class="ss">f&quot;あなたの好きな色は </span><span class="sc">{</span>option<span class="sc">}</span><span class="ss"> ですね！&quot;</span>)</span></code></pre></div>
+<h4 id="コード解説">コード解説</h4>
+<ul>
+<li><code>st.title("タイトル")</code>：アプリのタイトルを設定します。</li>
+<li><code>st.text_input("ラベル")</code>：ユーザーからのテキスト入力を受け取ります。</li>
+<li><code>st.button("ボタン名")</code>：ボタンがクリックされたら特定の処理を実行します。</li>
+<li><code>st.slider("スライダー名", 最小値, 最大値, 初期値)</code>：数値をスライダーで選択できます。</li>
+<li><code>st.checkbox("チェックボックス名")</code>：チェックが入った場合に表示される内容を制御できます。</li>
+<li><code>st.selectbox("セレクトボックス名", [選択肢リスト])</code>：ドロップダウンメニューを作成します。</li>
+</ul>
+<h3 id="streamlitを実行する">Streamlitを実行する</h3>
+<p>作成したアプリを起動するには、次のコマンドを実行します。</p>
+<pre><code>streamlit run streamlit_app.py</code></pre>
+<p><img src="./image/screenshot_streamlit_app.png" /></p>
+<p><strong>補足</strong>
+実行時にEmailの入力を求められることがありますが、空欄のままエンターキーを押せば問題ありません。</p>
+<h3 id="webにアクセスする">Webにアクセスする</h3>
+<p>アプリが起動すると、ブラウザで以下のURLにアクセスできます。
+http://localhost:8501/</p>
+<h3 id="プログラムを止める">プログラムを止める</h3>
+<p>アプリを終了するには、ターミナルに戻り、<code>Ctrl + c</code>を押下してください。</p>
+<h2 id="streamlitの活用例">Streamlitの活用例</h2>
+<h3 id="データの可視化">データの可視化</h3>
+<p>PandasやMatplotlibを使い、グラフや表を動的に表示できます。 <img
+src="./image/screenshot_visual.png" /> ### ダッシュボードの作成
+業務データをリアルタイムで分析し、視覚的にわかりやすく表示できます。
+<img src="./image/screenshto_dashboard.png" /></p>
