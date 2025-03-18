@@ -1,10 +1,9 @@
-# Streamlitを使ってみよう
-
-## Streamlitとは？
+# **Streamlitを使ってみよう**
+## **Streamlitとは？**
 Streamlitは、Pythonのみで実装可能なWebアプリケーションのフレームワークです。
 シンプルなコードでインタラクティブなUIを作成でき、データ可視化や機械学習のデモなどに適しています。
 
-### Streamlitの特徴
+### **Streamlitの特徴**
 - シンプルなコード
   通常のWebフレームワーク(Flask, Django)とは異なり、HTMLやCSSを必要とせずPythonだけでWebアプリを作成することができます。
 - 高速な開発
@@ -12,14 +11,14 @@ Streamlitは、Pythonのみで実装可能なWebアプリケーションのフ�
 - データサイエンス向け
   PandasやTemsorFlowなどのライブラリと簡単に統合できるため、データ分析や機械学習の可視化に用いられることが多いです。
 
-## Streamlitを使ってWebアプリを作成
-### ライブラリをインストールする
+## **Streamlitを使ってWebアプリを作成**
+### **ライブラリをインストールする**
 まず、Streamlitをインストールします。
 ```
 pip install streamlit
 ```
 
-### ファイルを作成する
+### **ファイルを作成する**
 次に、アプリのスクリプトファイルを作成します。
 ```
 notepad streamlit_app.py
@@ -61,7 +60,7 @@ st.write(f"あなたの好きな色は {option} ですね！")
 - `st.checkbox("チェックボックス名")`：チェックが入った場合に表示される内容を制御できます。
 - `st.selectbox("セレクトボックス名", [選択肢リスト])`：ドロップダウンメニューを作成します。
 
-### Streamlitを実行する
+### **Streamlitを実行する**
 作成したアプリを起動するには、次のコマンドを実行します。
 ```
 streamlit run streamlit_app.py
@@ -72,17 +71,17 @@ streamlit run streamlit_app.py
 **補足**
 実行時にEmailの入力を求められることがありますが、空欄のままエンターキーを押せば問題ありません。
 
-### Webにアクセスする
+### **Webにアクセスする**
 アプリが起動すると、ブラウザで以下のURLにアクセスできます。
 http://localhost:8501/
 
-### プログラムを止める
+### **プログラムを止める**
 アプリを終了するには、ターミナルに戻り、`Ctrl + c`を押下してください。
 
-## Streamlitの活用例
-### データの可視化
+## **Streamlitの活用例**
+### **データの可視化**
 PandasやMatplotlibを使い、グラフや表を動的に表示できます。
 ![](./image/screenshot_visual.png)
-### ダッシュボードの作成
+### **ダッシュボードの作成**
 業務データをリアルタイムで分析し、視覚的にわかりやすく表示できます。
 ![](./image/screenshto_dashboard.png)

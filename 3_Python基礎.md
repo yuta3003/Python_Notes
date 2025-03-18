@@ -1,7 +1,6 @@
-# Python 基礎
-
-## Python 起動方法
-### Interactive
+# **Python 基礎**
+## **Python 起動方法**
+### **Interactive**
 対話的にPythonを実行する方法で、すぐにコードを入力し結果を確認できます。
 
 ターミナルやコマンドプロンプトで以下のコマンドを入力することで起動できます。
@@ -24,7 +23,7 @@ pythonの対話モードから抜ける場合には`exit()`を実行してくだ
 
 また、ブラウザ上で実行できる[Google Colab](https://colab.research.google.com/)やJupyter Labなどもあります。
 
-### Non-Interactive
+### **Non-Interactive**
 Python スクリプト（.py ファイル）を実行するモード。
 スクリプトの内容をすべて書いておき、一気に実行します。
 
@@ -48,6 +47,6 @@ Python スクリプト（.py ファイル）を実行するモード。
     ```
 
 
-## 参考資料
+## **参考資料**
 - [東京大学Python入門](https://utokyo-ipp.github.io/)
 - [Python公式チュートリアル](https://docs.python.org/ja/3/tutorial/index.html)
