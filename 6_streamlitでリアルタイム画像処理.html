@@ -1,0 +1,56 @@
+<h1
+id="リアルタイム画像処理アプリを作成してみよう"><strong>リアルタイム画像処理アプリを作成してみよう</strong></h1>
+<h2
+id="リアルタイム画像処理webアプリを作成"><strong>リアルタイム画像処理Webアプリを作成</strong></h2>
+<h3
+id="ライブラリをインストールする"><strong>ライブラリをインストールする</strong></h3>
+<pre><code>pip install -U streamlit streamlit-webrtc opencv-python-headless</code></pre>
+<ul>
+<li><code>streamlit</code>: Streamlit本体</li>
+<li><code>streamlit-webrtc</code>:
+Streamlitでリアルタイム映像・音声を扱うコンポーネント</li>
+<li><code>opencv-python-headless</code>:
+OpenCV(UIはStreamlitで作成するのでHeadless版を使用)</li>
+</ul>
+<h3
+id="カメラの映像を表示するwebアプリを作成"><strong>カメラの映像を表示するWebアプリを作成</strong></h3>
+<ul>
+<li><p>以下の内容を<code>camera.py</code>として作成し、保存する</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> streamlit <span class="im">as</span> st</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> streamlit_webrtc <span class="im">import</span> webrtc_streamer</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>st.title(<span class="st">&quot;My first Streamlit app&quot;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>st.write(<span class="st">&quot;Hello, world&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>webrtc_streamer(key<span class="op">=</span><span class="st">&quot;example&quot;</span>)</span></code></pre></div></li>
+<li><p>プログラムを実行する</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">streamlit</span> run camera.py</span></code></pre></div></li>
+<li><p>プログラムを停止する <code>Ctrl + c</code></p></li>
+</ul>
+<h3
+id="リアルタイム画像処理を行うwebアプリの作成"><strong>リアルタイム画像処理を行うWebアプリの作成</strong></h3>
+<ul>
+<li><p>以下の内容を<code>webrtc.py</code>として作成し、保存する</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> streamlit <span class="im">as</span> st</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> streamlit_webrtc <span class="im">import</span> webrtc_streamer</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> av</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>st.title(<span class="st">&quot;My first Streamlit app&quot;</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>st.write(<span class="st">&quot;Hello, world&quot;</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> callback(frame):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> frame.to_ndarray(<span class="bu">format</span><span class="op">=</span><span class="st">&quot;bgr24&quot;</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> cv2.cvtColor(cv2.Canny(img, <span class="dv">100</span>, <span class="dv">200</span>), cv2.COLOR_GRAY2BGR)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> av.VideoFrame.from_ndarray(img, <span class="bu">format</span><span class="op">=</span><span class="st">&quot;bgr24&quot;</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>webrtc_streamer(key<span class="op">=</span><span class="st">&quot;example&quot;</span>, video_frame_callback<span class="op">=</span>callback)</span></code></pre></div></li>
+<li><p>プログラムを実行する</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">streamlit</span> run webrtc.py</span></code></pre></div></li>
+<li><p>プログラムを停止する <code>Ctrl + c</code></p></li>
+</ul>
