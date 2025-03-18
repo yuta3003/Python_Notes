@@ -1,3 +1,14 @@
+# **シリーズ記事一覧**
+| | タイトル  リンク |
+|:---:|:---:|
+| **第1回**  | [環境構築](https://qiita.com/yuta3003/items/302ae91e6f4ab7164d9b) |
+| **第2回**  | [Python 概要](https://qiita.com/yuta3003/items/a51dbfea2c942ffdbec2) |
+| **第3回**  | [Python 基礎](https://qiita.com/yuta3003/items/178c238c387faecc8d13) |
+| **第4回**  | [Pythonで学ぶWebの基本と実践](https://qiita.com/yuta3003/items/902dc18c6618456c7010) |
+| **第5回**  | Streamlitを使ってみよう |
+| **第6回**  | Streamlitでリアルタイム画像処理 |
+| **第7回**  | リアルタイムで顔検出を行ってみよう |
+
 # **Streamlitを使ってみよう**
 ## **Streamlitとは？**
 Streamlitは、Pythonのみで実装可能なWebアプリケーションのフレームワークです。
@@ -65,8 +76,7 @@ st.write(f"あなたの好きな色は {option} ですね！")
 ```
 streamlit run streamlit_app.py
 ```
-
-![](./image/screenshot_streamlit_app.png)
+![screenshot_streamlit_app.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/356851/752324ce-7df3-4a66-971b-f353f6ec0bc2.png)
 
 **補足**
 実行時にEmailの入力を求められることがありますが、空欄のままエンターキーを押せば問題ありません。
@@ -81,7 +91,8 @@ http://localhost:8501/
 ## **Streamlitの活用例**
 ### **データの可視化**
 PandasやMatplotlibを使い、グラフや表を動的に表示できます。
-![](./image/screenshot_visual.png)
+![screenshot_visual.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/356851/8b2b6c29-993e-40c9-9848-bd8fee839e22.png)
+
 ### **ダッシュボードの作成**
 業務データをリアルタイムで分析し、視覚的にわかりやすく表示できます。
-![](./image/screenshto_dashboard.png)
+![screenshto_dashboard.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/356851/fc225396-20dd-42cc-b43e-60c66c215ac7.png)
